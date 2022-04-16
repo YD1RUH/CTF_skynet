@@ -3,7 +3,7 @@ this is Poc writeup CTF skynet from TryHackMe.com, link https://tryhackme.com/ro
 
 ## tools
 1. nmap (looking port that open)
-2. dirb (brute listing directory)
+2. dirb (enumerate list directory)
 3. smbmap (mapping smb server)
 4. smbclient (log in smb server)
 5. burp (community edition)
@@ -11,7 +11,7 @@ this is Poc writeup CTF skynet from TryHackMe.com, link https://tryhackme.com/ro
 7. python3 (for http.server)
 8. nano (text editor)
 9. hydra (brute force by wordlist from login form)
-10. gobuster (brute listing director)
+10. gobuster (enumerate list director)
 11. searchsploit (search exploit that match with targeted system)
 
 ## Let's Rock n Roll
@@ -19,7 +19,7 @@ this is Poc writeup CTF skynet from TryHackMe.com, link https://tryhackme.com/ro
 
 ![nmap](/submit/1.png "nmap")
 
-2. brute listing directory using dirb :
+2. Enumerate listing directory using dirb :
 
 ![dirb](/submit/2.png "dirb")
 
@@ -112,7 +112,7 @@ this is Poc writeup CTF skynet from TryHackMe.com, link https://tryhackme.com/ro
 
 ![previlegeescall](/submit/38.png "previlegeescall")
 
-18. BOOM we got the root access. now go into **/root** and cat the root.txt
+18. BOOM we got the root access. go into **/root** and cat the root.txt
 
 ![previlegeescall](/submit/39.png "previlegeescall")
 
